@@ -20,13 +20,13 @@ public abstract class Filtrados implements BlueprintsPersistence{
     public Filtrados() {
         //load stub data
         Point[] pts=new Point[]{new Point(140, 140),new Point(115, 115)};
-        Blueprint bp=new Blueprint("_authorname_", "_bpname_ ",pts);
+        Blueprint bp=new Blueprint("_authorname_", "_bpname_",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
         pts=new Point[]{new Point(10, 140),new Point(15, 115),new Point(70, 70),new Point(80, 80)};
-        bp=new Blueprint("_authorname_", "_bpname1_ ",pts);
+        bp=new Blueprint("_authorname_", "_bpname1_",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
         pts=new Point[]{new Point(90, 90),new Point(100, 115),new Point(120, 140),new Point(15, 11)};
-        bp=new Blueprint("_Cesar_", "_bpname_ ",pts);
+        bp=new Blueprint("_Cesar_", "_bpname_",pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
         
     }    
@@ -55,15 +55,17 @@ public abstract class Filtrados implements BlueprintsPersistence{
     
     @Override
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException {
+    	
     	Set<Blueprint> conjunto=new HashSet<Blueprint>();
     	
     	for (Map.Entry<Tuple<String,String>, Blueprint> entry : blueprints.entrySet()) {
-    		if(entry.getKey().getElem1() == author) {
+    		if(entry.getKey().getElem1().equals(author)) {
     			Blueprint blu=new Blueprint(entry.getKey().getElem1(),entry.getKey().getElem2(),formaFiltrado(entry.getValue().getPoints()));
     			conjunto.add(blu);
     		}
     	    //System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
     	}
+    
     	if(conjunto.size()==0) {
     		throw new BlueprintNotFoundException("The author not exist");
     	}

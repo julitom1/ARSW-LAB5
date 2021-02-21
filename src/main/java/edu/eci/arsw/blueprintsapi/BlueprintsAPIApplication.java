@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import edu.eci.arsw.blueprints.controllers.BlueprintAPIController;
+
 @SpringBootApplication
 @ComponentScan(basePackages = {"edu.eci.arsw.blueprints"})
 public class BlueprintsAPIApplication {

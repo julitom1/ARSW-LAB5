@@ -1,0 +1,18 @@
+* Que condiciones de carrera se presentan?
+
+Cuando se quiere actualizar un blueprint y ese blueprint ya esta siendo actualizado puede que a la hora de hacer 
+un get presente inconsistencias en las consultas del blueprint actualizado.
+
+Al mometo de guardar un blueprint puede que exista otra accion para guardar otro blueprint aqui se podria 
+presentar una condición e carrera ya que uno de ellos no se guardaria.
+
+* Cuales son las respectivas regiones críticas?
+
+pudimos ver que las regiones criticas se podrian presentar en los metodos updateBlueprints y saveBlueprints 
+ya que cuando dos personas en la web quieran guardar o modificar un blueprint al mismo tiempo podria ocacionar 
+inconsistencias.
+
+* Escriba su análisis y la solución aplicada en el archivo 
+
+Se opto por usar una clase ConcurrentHashMap, esta nos sera de ayuda a la hora de consultar, escribir y guardar 
+los blueprints.

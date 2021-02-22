@@ -14,8 +14,8 @@ import edu.eci.arsw.blueprints.services.BlueprintsServices;
 //import edu.eci.arsw.springdemo.GrammarChecker;
 
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -153,7 +153,7 @@ public class InMemoryPersistenceTest {
 		}
         
     }
-    
+  
     @Test
     public void existeConjunto() {
     	//InMemoryBlueprintPersistence ibpp=new InMemoryBlueprintPersistence();

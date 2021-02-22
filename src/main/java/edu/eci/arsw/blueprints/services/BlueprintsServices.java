@@ -21,6 +21,8 @@ import org.springframework.stereotype.Service;
  *
  * @author hcadavid
  */
+
+@Service
 @Controller
 public class BlueprintsServices {
    
@@ -45,6 +47,11 @@ public class BlueprintsServices {
     public Blueprint getBlueprint(String author,String name) throws BlueprintNotFoundException{
         //throw new UnsupportedOperationException("Not supported yet."); 
         return bpp.getBlueprint(author, name);
+    }
+    
+    public void UpdateBlueprint(String author,String name,Point[] point) throws BlueprintNotFoundException{
+        //throw new UnsupportedOperationException("Not supported yet."); 
+        bpp.UpdateBlueprint(author,name,point);
     }
     
     /**

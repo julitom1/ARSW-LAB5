@@ -91,5 +91,28 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     	}
     	return lista;
     }
+
+	@Override
+	public void UpdateBlueprint(String author, String name, Point[] point) throws BlueprintNotFoundException {
+		Blueprint blu=blueprints.get(new Tuple<>(author, name));
+    	if(blu==null) {
+    		throw new BlueprintNotFoundException("The blueprint not exist");
+    	}
+    	Point[] l=new Point[blu.getPoints().size()+point.length];
+    	int i=0;
+    	for(Point p:blu.getPoints()) {
+    		l[i]=p;i++;
+    	}
+    	for(Point p:point) {
+    		l[i]=p;i++;
+    	}
+    	Blueprint bp=new Blueprint(author,name,l);
+        blueprints.put(new Tuple<>(author,name), bp);
+    	
+    
+    	
+    	
+
+	}
     
 }

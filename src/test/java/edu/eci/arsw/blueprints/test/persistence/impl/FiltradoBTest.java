@@ -14,6 +14,7 @@ import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.services.BlueprintsServices;
 
 public class FiltradoBTest {
+	/***
 	@Test
     public void noExisteAutorGetPrint() {
     	//InMemoryBlueprintPersistence ibpp=new InMemoryBlueprintPersistence();
@@ -35,5 +36,5 @@ public class FiltradoBTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+    }***/
 }

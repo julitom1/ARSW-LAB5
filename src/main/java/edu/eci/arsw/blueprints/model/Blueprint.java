@@ -42,7 +42,7 @@ public class Blueprint {
     }
     
     public void addPoint(Point p){
-        this.points.add(p);
+        points.add(p);
     }
 
     @Override

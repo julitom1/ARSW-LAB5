@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.model.Point;
@@ -14,7 +15,7 @@ import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 
 public abstract class Filtrados implements BlueprintsPersistence{
-	protected final Map<Tuple<String,String>,Blueprint> blueprints=new HashMap<>();
+	protected final ConcurrentHashMap<Tuple<String,String>,Blueprint> blueprints=new ConcurrentHashMap<>();
 	protected FiltradoB b=null;
     
     public Filtrados() {
@@ -90,7 +91,7 @@ public abstract class Filtrados implements BlueprintsPersistence{
     	if(blu==null) {
     		throw new BlueprintNotFoundException("The blueprint not exist");
     	}
-   
+    	
     	Point[] l=new Point[blu.getPoints().size()+point.length];
     	int i=0;
     	for(Point p:blu.getPoints()) {
@@ -99,8 +100,11 @@ public abstract class Filtrados implements BlueprintsPersistence{
     	for(Point p:point) {
     		l[i]=p;i++;
     	}
+    	
     	Blueprint bp=new Blueprint(author,name,l);
-        blueprints.put(new Tuple<>(author,name), bp);
+    
+    	blueprints.put(new Tuple<>(author,name), bp);
+    	
     	
     	
 

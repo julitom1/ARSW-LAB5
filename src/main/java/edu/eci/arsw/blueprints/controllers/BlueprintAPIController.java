@@ -80,8 +80,9 @@ public class BlueprintAPIController {
 	         }
 	      
 	         Blueprint bp = new Blueprint(jsonauthor, jsonName, points);
-	         
-	        bs.addNewBlueprint(bp);
+	       
+	        	bs.addNewBlueprint(bp);
+	        
 	    	
 	        return new ResponseEntity<>(obj,HttpStatus.CREATED);
 	    } catch (Exception ex) {
@@ -126,8 +127,6 @@ public class BlueprintAPIController {
 	    
 
 	        JSONObject obj = new JSONObject(puntos);
-	        
-
 	        JSONArray pointsJson = obj.getJSONArray("puntos");
 	        Point[] points = new Point[pointsJson.length()];
 	        for(int i = 0; i < points.length; i++){
@@ -135,22 +134,17 @@ public class BlueprintAPIController {
 	            points[i] = new Point(point.getInt("x"), point.getInt("y"));
 	        }
 
-
-	      
 	       try {
-	    	   bs.UpdateBlueprint(author, bpname, points);
+	    	   
+	    		   bs.UpdateBlueprint(author, bpname, points);
+	    	   
 	       } catch (BlueprintNotFoundException e) {
 			
 	    	   Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, e);
 	    	   return new ResponseEntity<>("error",HttpStatus.FORBIDDEN);   
 	       }
-	       
 	        return new ResponseEntity<>(obj,HttpStatus.ACCEPTED);
 
-
-	  
-	                 
-	    
 	}
     
     

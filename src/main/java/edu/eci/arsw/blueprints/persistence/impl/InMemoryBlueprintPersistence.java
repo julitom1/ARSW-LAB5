@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ import org.springframework.stereotype.Service;
 
 public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
-    private final Map<Tuple<String,String>,Blueprint> blueprints=new HashMap<>();
+    private final ConcurrentHashMap<Tuple<String,String>,Blueprint> blueprints=new ConcurrentHashMap<>();
     private FiltradoB b=null;
     
     public InMemoryBlueprintPersistence() {
@@ -106,6 +107,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     	for(Point p:point) {
     		l[i]=p;i++;
     	}
+    	
     	Blueprint bp=new Blueprint(author,name,l);
         blueprints.put(new Tuple<>(author,name), bp);
     	
